@@ -1,51 +1,93 @@
-import SectionLabel from "@/components/ui/SectionLabel";
-import ProjectCard from "@/components/ui/ProjectCard";
-import { PROJECTS } from "@/lib/constants";
+"use client";
+
+import { PROJECTS_TICKER, PROJECTS_OUTCOMES } from "@/lib/constants";
 
 export default function ProjectsSection() {
+  const handleOpenDeviceModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("open-device-modal"));
+  };
+
+  const outcomeBgs = [
+    "var(--orange-light)",
+    "var(--teal-light)",
+    "var(--purple-light)",
+    "var(--yellow-light)",
+  ];
+
   return (
-    <section id="projects" className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-12">
-          <SectionLabel className="mb-3">What you&apos;ll actually build</SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-4">
-            Real projects. Real companies.
-            <br />
-            Real proof for your resume.
-          </h2>
-          <p className="text-text-secondary text-lg max-w-2xl leading-relaxed">
-            Scroll through what your peers are working on right now — across
-            engineering and management tracks.
-          </p>
+    <section className="section light-bg" id="projects">
+      <div className="section-eyebrow">What you'll actually build</div>
+      <h2 className="section-h2">
+        Real projects. Real companies.
+        <br />
+        Real proof for your resume.
+      </h2>
+      <p className="section-sub">
+        Scroll through what your peers are working on right now — across
+        engineering and management tracks.
+      </p>
+
+      <div className="projects-ticker-wrap">
+        <div className="projects-ticker">
+          {[...PROJECTS_TICKER, ...PROJECTS_TICKER].map((project, index) => (
+            <div className="project-chip" key={`${project.title}-${index}`}>
+              <div
+                className="chip-domain"
+                style={{ color: project.categoryColor }}
+              >
+                {project.category}
+              </div>
+              <div className="chip-title">{project.title}</div>
+              <div className="chip-meta">{project.meta}</div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Horizontal Scroll Cards */}
-      <div className="relative">
-        <div
-          className="flex gap-5 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-4 snap-x snap-mandatory scrollbar-thin"
-          role="list"
-          aria-label="Career project examples"
-        >
-          {/* Left spacer for max-w-7xl alignment */}
-          <div className="flex-shrink-0 w-0 lg:w-[calc((100vw-1280px)/2)]" aria-hidden="true" />
-
-          {PROJECTS.map((project) => (
-            <div key={project.title} className="snap-start" role="listitem">
-              <ProjectCard project={project} />
-            </div>
+      <div className="projects-bottom">
+        <ul className="outcomes-list">
+          {PROJECTS_OUTCOMES.map((outcome, idx) => (
+            <li key={outcome.title}>
+              <div
+                className="outcome-icon"
+                style={{ background: outcomeBgs[idx] }}
+              >
+                {outcome.icon}
+              </div>
+              <div>
+                <strong>{outcome.title}</strong>
+                <p>{outcome.description}</p>
+              </div>
+            </li>
           ))}
+        </ul>
 
-          {/* Right spacer */}
-          <div className="flex-shrink-0 w-4" aria-hidden="true" />
+        <div className="project-cta-card">
+          <h3>Start building before others even settle in.</h3>
+          <p>
+            Students who work on real projects from Year 1 enter placement
+            season with a portfolio — not just a transcript. The device is how
+            you start.
+          </p>
+          <button className="btn-white" onClick={handleOpenDeviceModal}>
+            See Devices &amp; Unlock Projects →
+          </button>
+          <div className="pcount-row">
+            <div>
+              <div className="pcount-num">50+</div>
+              <div className="pcount-label">Project tracks</div>
+            </div>
+            <div>
+              <div className="pcount-num">12+</div>
+              <div className="pcount-label">Domains</div>
+            </div>
+            <div>
+              <div className="pcount-num">100%</div>
+              <div className="pcount-label">Mentor-reviewed</div>
+            </div>
+          </div>
         </div>
-
-        {/* Scroll fade indicators */}
-        <div
-          className="absolute top-0 right-0 bottom-4 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"
-          aria-hidden="true"
-        />
       </div>
     </section>
   );

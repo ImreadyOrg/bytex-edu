@@ -1,40 +1,82 @@
-import SectionLabel from "@/components/ui/SectionLabel";
-import FeatureCard from "@/components/ui/FeatureCard";
-import { BUNDLED_FEATURES } from "@/lib/constants";
+import { BUNDLED_FEATURES, STATS } from "@/lib/constants";
 
 export default function BundledFeaturesSection() {
-  return (
-    <section
-      id="whats-included"
-      className="relative py-20 md:py-28 bg-brand-navy overflow-hidden"
-    >
-      {/* Decorative gradient */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-orange/5 rounded-full blur-3xl"
-        aria-hidden="true"
-      />
+  const leftFeatures = BUNDLED_FEATURES.slice(0, 3);
+  const rightFeatures = BUNDLED_FEATURES.slice(3, 6);
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-14">
-          <SectionLabel variant="white" className="mb-3">
-            What&apos;s bundled with every device
-          </SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
-            More than a laptop.
-            <br />
-            A career head-start.
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
-            The device is just the hardware. Here&apos;s the ecosystem that comes
-            activated with it.
-          </p>
+  const backgrounds = [
+    "rgba(255,107,43,0.15)", // Orange
+    "rgba(0,196,159,0.15)",  // Teal
+    "rgba(123,92,240,0.15)", // Purple
+    "rgba(255,216,77,0.15)", // Yellow
+    "rgba(255,107,43,0.15)", // Orange
+    "rgba(0,196,159,0.15)",  // Teal
+  ];
+
+  return (
+    <section className="section navy-bg" id="bundled">
+      <div className="section-eyebrow">What's bundled with every device</div>
+      <h2 className="section-h2">
+        More than a laptop.
+        <br />
+        A career head-start.
+      </h2>
+      <p className="section-sub">
+        The device is just the hardware. Here's the ecosystem that comes
+        activated with it.
+      </p>
+
+      <div className="bundled-grid">
+        <div className="bundled-left">
+          {leftFeatures.map((feature, i) => (
+            <div className="bundle-item" key={feature.title}>
+              <div
+                className="bundle-num"
+                style={{ background: backgrounds[i] }}
+              >
+                {feature.icon}
+              </div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Feature Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-4">
-          {BUNDLED_FEATURES.map((feature, index) => (
-            <FeatureCard key={feature.title} feature={feature} index={index} />
+        <div className="bundled-right">
+          {rightFeatures.map((feature, i) => (
+            <div className="bundle-item" key={feature.title}>
+              <div
+                className="bundle-num"
+                style={{ background: backgrounds[i + 3] }}
+              >
+                {feature.icon}
+              </div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div
+        style={{
+          marginTop: "52px",
+          padding: "36px",
+          background: "rgba(255,107,43,0.1)",
+          border: "1px solid rgba(255,107,43,0.2)",
+          borderRadius: "20px",
+        }}
+      >
+        <div className="stat-row" style={{ justifyContent: "space-around" }}>
+          {STATS.map((stat) => (
+            <div className="stat-item" key={stat.label}>
+              <div className="stat-num">{stat.value}</div>
+              <div className="stat-label">{stat.label}</div>
+            </div>
           ))}
         </div>
       </div>
