@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+npm-debug.log*
+
+# Build output
+.next
+
+# Version control
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+AGENTS.md
+CLAUDE.md
+LICENSE
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore

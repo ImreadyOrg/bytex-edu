@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-brand-orange: #F37021;
+  --color-brand-orange-light: #FF8A3D;
+  --color-brand-orange-dark: #D45E15;
+  --color-brand-dark: #1B1F3B;
+  --color-brand-navy: #0F1629;
+  --color-brand-green: #10B981;
+  --color-brand-purple: #8B5CF6;
+  --color-brand-coral: #FF6B6B;
+  --color-brand-teal: #06B6D4;
+
+  /* Text Colors */
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+
+  /* Surface Colors */
+  --color-surface: #FFFFFF;
+  --color-surface-warm: #FFF8F3;
+  --color-surface-warm-alt: #FFF1E6;
+  --color-surface-dark: #0F1629;
+  --color-surface-dark-card: #1A2038;
+
+  /* Border Colors */
+  --color-border-light: #F3F4F6;
+  --color-border-default: #E5E7EB;
+  --color-border-orange: #F37021;
+
+  /* Font Family */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Custom Spacing */
+  --spacing-section: 6rem;
+  --spacing-section-sm: 4rem;
+
+  /* Animation */
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 2s infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+  --animate-slide-in-right: slide-in-right 0.5s ease-out forwards;
+  --animate-counter: counter 2s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes counter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Visible */
+*:focus-visible {
+  outline: 2px solid #F37021;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
