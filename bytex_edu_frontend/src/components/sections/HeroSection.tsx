@@ -1,94 +1,123 @@
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
-import FloatingProCard from "@/components/ui/FloatingProCard";
+"use client";
 
 export default function HeroSection() {
+  const handleOpenDeviceModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("open-device-modal"));
+  };
+
+  const handleOpenCollegeModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("open-college-modal"));
+  };
+
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden bg-gradient-to-br from-surface-warm via-white to-surface-warm-alt"
-    >
-      {/* Decorative background gradient orbs */}
-      <div
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-brand-orange/5 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-brand-purple/5 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
-          <div className="animate-fade-in-up">
-            {/* Announcement Badge */}
-            <Badge variant="default" className="mb-8">
-              🎓 Admission Season 2026 — Enrolments Open
-            </Badge>
-
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-text-primary leading-[1.15] mb-6 tracking-tight">
-              Get a device.
-              <br />
-              Unlock{" "}
-              <em className="text-brand-orange not-italic font-bold italic">
-                real industry
-              </em>
-              <br />
-              projects with it.
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-text-secondary text-lg leading-relaxed mb-8 max-w-lg">
-              Bytex Edu bundles career-accelerating industry projects,
-              mentorship and a verified portfolio with every student device
-              — so you don&apos;t just own a laptop, you own your future.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <Button variant="primary" size="lg" href="#explore">
-                Explore Devices & Projects →
-              </Button>
-              <Button variant="secondary" size="lg" href="#lab">
-                Set Up Your Lab 🏛
-              </Button>
-            </div>
-
-            {/* Feature Badges */}
-            <div className="flex flex-wrap gap-3">
-              {[
-                "Industry projects included",
-                "No-cost EMI available",
-                "Mentor-reviewed portfolio",
-              ].map((feature) => (
-                <Badge key={feature} variant="tag">
-                  <svg
-                    className="w-3.5 h-3.5 text-brand-orange flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  {feature}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Content - Floating Pro Card */}
-          <div
-            className="hidden lg:flex justify-center items-center animate-slide-in-right"
-            aria-hidden="true"
+    <section className="hero">
+      <div className="hero-content">
+        <div className="hero-badge fade-up">
+          🎓 Admission Season 2026 — Enrolments Open
+        </div>
+        <h1 className="fade-up d1">
+          Get a device.
+          <br />
+          Unlock <em>real industry</em>
+          <br />
+          projects with it.
+        </h1>
+        <p className="hero-sub fade-up d2">
+          Bytex Edu bundles career-accelerating industry projects, mentorship
+          and a verified portfolio with every student device — so you don't
+          just own a laptop, you own your future.
+        </p>
+        <div className="hero-ctas fade-up d3">
+          <a
+            href="#"
+            className="btn-primary"
+            onClick={handleOpenDeviceModal}
           >
-            <FloatingProCard />
+            Explore Devices &amp; Projects →
+          </a>
+          <a
+            href="#"
+            className="btn-college"
+            onClick={handleOpenCollegeModal}
+          >
+            Set Up Your Lab 🏛️
+          </a>
+        </div>
+        <div className="hero-trust fade-up d4">
+          <div className="trust-pill">
+            ✓ <strong>Industry projects</strong> included
           </div>
+          <div className="trust-pill">
+            ✓ <strong>No-cost EMI</strong> available
+          </div>
+          <div className="trust-pill">
+            ✓ <strong>Mentor-reviewed</strong> portfolio
+          </div>
+        </div>
+      </div>
+      <div className="hero-visual fade-up d2">
+        <div className="card-stack">
+          <div className="journey-card card-back">
+            <div className="card-eyebrow" style={{ color: "var(--purple)" }}>
+              Level 3 — Builder
+            </div>
+            <div className="card-title">Mentor Review Complete</div>
+            <div className="card-meta">
+              Automated Inventory System · GitHub · Demo video ready
+            </div>
+            <div
+              className="card-tag"
+              style={{
+                backgroundColor: "var(--purple-light)",
+                color: "var(--purple)",
+              }}
+            >
+              🎯 Industry verified
+            </div>
+          </div>
+          <div className="journey-card card-mid">
+            <div className="card-eyebrow" style={{ color: "var(--teal)" }}>
+              New project unlocked
+            </div>
+            <div className="card-title">Smart Campus Energy Monitor</div>
+            <div className="card-meta">
+              IoT · Team of 4 · Mentor assigned
+            </div>
+            <div
+              className="card-tag"
+              style={{
+                backgroundColor: "var(--teal-light)",
+                color: "#007A62",
+              }}
+            >
+              ⚡ Week 1 of 10
+            </div>
+          </div>
+          <div className="journey-card card-front">
+            <div className="card-eyebrow" style={{ color: "var(--orange)" }}>
+              🔥 Most Popular — Pro Tier
+            </div>
+            <div className="card-title">
+              Your device is ready. Your projects await.
+            </div>
+            <div className="card-meta">
+              3 industry projects · 2 mentor sessions · Portfolio profile ·
+              Placement referrals
+            </div>
+            <div
+              className="card-tag"
+              style={{
+                backgroundColor: "var(--orange-light)",
+                color: "var(--orange)",
+                border: "1.5px solid var(--orange-mid)",
+              }}
+            >
+              ✦ Unlock on purchase
+            </div>
+          </div>
+          <div className="floating-chip">📁 Portfolio building →</div>
         </div>
       </div>
     </section>
