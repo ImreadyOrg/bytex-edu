@@ -1,0 +1,7 @@
+{
+  "name": "bytex-edu-root",
+  "private": true,
+  "scripts": {
+    "deploy:vercel": "cd bytex_edu_frontend && npx vercel --prod"
+  }
+}
