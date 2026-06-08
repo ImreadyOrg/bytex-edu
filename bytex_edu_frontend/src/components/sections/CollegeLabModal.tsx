@@ -120,7 +120,7 @@ export default function CollegeLabModal() {
             {selectedLabName ? ` — ${selectedLabName}` : ""}
           </h3>
           <p>
-            Tell us about your institution and we'll prepare a detailed
+            Tell us about your institution and we&apos;ll prepare a detailed
             architecture document and pricing proposal for your specific
             requirements — within 48 hours.
           </p>

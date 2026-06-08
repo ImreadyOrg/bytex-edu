@@ -15,14 +15,14 @@ export default function BundledFeaturesSection() {
 
   return (
     <section className="section navy-bg" id="bundled">
-      <div className="section-eyebrow">What's bundled with every device</div>
+      <div className="section-eyebrow">What&apos;s bundled with every device</div>
       <h2 className="section-h2">
         More than a laptop.
         <br />
         A career head-start.
       </h2>
       <p className="section-sub">
-        The device is just the hardware. Here's the ecosystem that comes
+        The device is just the hardware. Here&apos;s the ecosystem that comes
         activated with it.
       </p>
 

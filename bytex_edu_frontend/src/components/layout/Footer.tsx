@@ -1,4 +1,3 @@
-import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -25,7 +24,7 @@ export default function Footer() {
           <h4>For Students</h4>
           <a href="#">How it works</a>
           <a href="#">Career projects</a>
-          <a href="#">What's included</a>
+          <a href="#">What&apos;s included</a>
           <a href="#">Proficiency levels</a>
         </div>
         <div className="footer-col">

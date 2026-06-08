@@ -26,7 +26,7 @@ export default function HeroSection() {
         </h1>
         <p className="hero-sub fade-up d2">
           Bytex Edu bundles career-accelerating industry projects, mentorship
-          and a verified portfolio with every student device — so you don't
+          and a verified portfolio with every student device — so you don&apos;t
           just own a laptop, you own your future.
         </p>
         <div className="hero-ctas fade-up d3">

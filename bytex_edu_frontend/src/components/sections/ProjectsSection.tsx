@@ -17,7 +17,7 @@ export default function ProjectsSection() {
 
   return (
     <section className="section light-bg" id="projects">
-      <div className="section-eyebrow">What you'll actually build</div>
+      <div className="section-eyebrow">What you&apos;ll actually build</div>
       <h2 className="section-h2">
         Real projects. Real companies.
         <br />
