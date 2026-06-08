@@ -1,0 +1,3 @@
+[build]
+  base = "bytex_edu_frontend"
+  command = "npm run build"
