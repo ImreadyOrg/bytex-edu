@@ -2,12 +2,9 @@
 
 import { NAV_LINKS } from "@/lib/constants";
 
-export default function Navbar() {
-  const handleOpenDeviceModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent("open-device-modal"));
-  };
+import Link from "next/link";
 
+export default function Navbar() {
   return (
     <nav className="landing-nav">
       <a href="#" className="nav-logo">
@@ -29,9 +26,9 @@ export default function Navbar() {
           </a>
         ))}
       </div>
-      <button className="nav-cta" onClick={handleOpenDeviceModal}>
+      <Link href="/bundles" className="nav-cta">
         Explore Devices →
-      </button>
+      </Link>
     </nav>
   );
 }

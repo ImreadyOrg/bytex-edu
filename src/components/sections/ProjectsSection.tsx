@@ -1,13 +1,9 @@
 "use client";
 
 import { PROJECTS_TICKER, PROJECTS_OUTCOMES } from "@/lib/constants";
+import Link from "next/link";
 
 export default function ProjectsSection() {
-  const handleOpenDeviceModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent("open-device-modal"));
-  };
-
   const outcomeBgs = [
     "var(--orange-light)",
     "var(--teal-light)",
@@ -70,9 +66,9 @@ export default function ProjectsSection() {
             season with a portfolio — not just a transcript. The device is how
             you start.
           </p>
-          <button className="btn-white" onClick={handleOpenDeviceModal}>
+          <Link href="/bundles" className="btn-white">
             See Devices &amp; Unlock Projects →
-          </button>
+          </Link>
           <div className="pcount-row">
             <div>
               <div className="pcount-num">50+</div>
