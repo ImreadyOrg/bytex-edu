@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { COLLEGE_LABS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 import styles from "./page.module.css";
 import CollegeLabModal from "@/components/sections/CollegeLabModal";
 
@@ -75,16 +76,19 @@ export default function LabsPage() {
                 <div className={styles.desc}>{lab.desc}</div>
                 <div className={styles.divider} />
                 <ul className={styles.benefitsList}>
-                  {lab.includes.map((inc, idx) => (
-                    <li key={idx}>
-                      <span className={styles.bLabel}>{inc}</span>
+                  {lab.includes.map((item) => (
+                    <li key={item.text}>
+                      <span className={styles.bIcon}>
+                        <AppIcon name={item.icon} size="sm" className="text-[var(--navy)]" />
+                      </span>
+                      <span className={styles.bLabel}>{item.text}</span>
                     </li>
                   ))}
                 </ul>
                 <div className={styles.cardAction}>
                   <div className={styles.bottomDivider} />
                   <div className={styles.actionBtnContinue}>
-                    <span>Choose this tier</span>
+                    <span className={styles.chooseTierLabel}>Choose this tier</span>
                     <span className={styles.actionArrowContinue}>
                       <ChevronRight size={18} strokeWidth={2.5} />
                     </span>

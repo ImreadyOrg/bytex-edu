@@ -1,3 +1,11 @@
+import { AppIcon } from "@/lib/icons";
+import type { IconName } from "@/lib/icons";
+
+const FOOTER_PILLS: { icon: IconName; label: string }[] = [
+  { icon: "lock", label: "Secure" },
+  { icon: "package", label: "Free Delivery" },
+  { icon: "graduation-cap", label: "Student Verified" },
+];
 
 export default function Footer() {
   return (
@@ -48,9 +56,12 @@ export default function Footer() {
       <div className="footer-bottom">
         <p>© 2026 Bytex Global Innovation Pvt. Ltd. All rights reserved.</p>
         <div className="footer-pills">
-          <span className="footer-pill">🔒 Secure</span>
-          <span className="footer-pill">📦 Free Delivery</span>
-          <span className="footer-pill">🎓 Student Verified</span>
+          {FOOTER_PILLS.map((pill) => (
+            <span className="footer-pill" key={pill.label}>
+              <AppIcon name={pill.icon} size="xs" className="inline-block mr-1 -mt-0.5" />
+              {pill.label}
+            </span>
+          ))}
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 "use client";
 
 import { PROJECTS_TICKER, PROJECTS_OUTCOMES } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 import Link from "next/link";
 
 export default function ProjectsSection() {
@@ -49,7 +50,7 @@ export default function ProjectsSection() {
                 className="outcome-icon"
                 style={{ background: outcomeBgs[idx] }}
               >
-                {outcome.icon}
+                <AppIcon name={outcome.icon} size="md" className="text-[var(--navy)]" />
               </div>
               <div>
                 <strong>{outcome.title}</strong>

@@ -1,3 +1,5 @@
+import type { IconName } from "@/lib/icons";
+
 export interface NavLink {
   readonly label: string;
   readonly href: string;
@@ -5,13 +7,13 @@ export interface NavLink {
 }
 
 export interface FeatureItem {
-  readonly icon: string;
+  readonly icon: IconName;
   readonly title: string;
   readonly description: string;
 }
 
 export interface AudienceItem {
-  readonly icon: string;
+  readonly icon: IconName;
   readonly title: string;
   readonly description: string;
   readonly isPrimary?: boolean;
@@ -30,7 +32,7 @@ export interface StatItem {
 }
 
 export interface WhyItem {
-  readonly icon: string;
+  readonly icon: IconName;
   readonly title: string;
   readonly description: string;
 }
@@ -51,7 +53,7 @@ export interface StepItem {
 }
 
 export interface BenefitItem {
-  readonly icon: string;
+  readonly icon: IconName;
   readonly title: string;
   readonly sub: string;
 }
@@ -60,22 +62,26 @@ export interface TierItem {
   readonly key: string;
   readonly name: string;
   readonly who: string;
-  readonly icon: string;
+  readonly icon: IconName;
   readonly price: string;
   readonly featured?: boolean;
   readonly popText?: string;
   readonly benefits: readonly BenefitItem[];
 }
 
+export interface LabIncludeItem {
+  readonly icon: IconName;
+  readonly text: string;
+}
+
 export interface LabItem {
   readonly key: string;
   readonly name: string;
-  readonly icon: string;
+  readonly icon: IconName;
   readonly badgeBg: string;
   readonly badgeColor: string;
   readonly badgeText: string;
   readonly desc: string;
-  readonly includes: readonly string[];
+  readonly includes: readonly LabIncludeItem[];
   readonly flagship?: boolean;
 }
-

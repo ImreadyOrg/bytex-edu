@@ -1,9 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { AppIcon } from "@/lib/icons";
+import type { IconName } from "@/lib/icons";
+
+const STUDENT_TAGS: { icon: IconName; label: string }[] = [
+  { icon: "graduation-cap", label: "Engineering" },
+  { icon: "bar-chart-3", label: "Management" },
+  { icon: "credit-card", label: "No-cost EMI" },
+];
+
+const COLLEGE_TAGS: { icon: IconName; label: string }[] = [
+  { icon: "monitor", label: "Budget Lab" },
+  { icon: "brain", label: "AI Lab" },
+  { icon: "microscope", label: "Research Lab" },
+];
 
 export default function DualCtaSection() {
-
   return (
     <section className="dual-cta">
       <div className="dual-panel left-panel">
@@ -18,15 +31,16 @@ export default function DualCtaSection() {
           Student pricing revealed on sign-up.
         </div>
         <div className="dual-icons">
-          <span className="dual-tag">🎒 Engineering</span>
-          <span className="dual-tag">📊 Management</span>
-          <span className="dual-tag">💳 No-cost EMI</span>
+          {STUDENT_TAGS.map((tag) => (
+            <span className="dual-tag" key={tag.label}>
+              <AppIcon name={tag.icon} size="xs" />
+              {tag.label}
+            </span>
+          ))}
         </div>
-        <Link
-          href="/bundles"
-          className="dual-cta-btn orange"
-        >
-          Explore Devices &amp; Projects →
+        <Link href="/bundles" className="dual-cta-btn orange">
+          Explore Devices &amp; Projects
+          <AppIcon name="chevron-right" size="xs" className="inline-block ml-1" />
         </Link>
       </div>
       <div className="dual-panel right-panel">
@@ -39,12 +53,16 @@ export default function DualCtaSection() {
           request architecture and pricing for your institution.
         </div>
         <div className="dual-icons">
-          <span className="dual-tag">🖥️ Budget Lab</span>
-          <span className="dual-tag">🤖 AI Lab</span>
-          <span className="dual-tag">🔬 Research Lab</span>
+          {COLLEGE_TAGS.map((tag) => (
+            <span className="dual-tag" key={tag.label}>
+              <AppIcon name={tag.icon} size="xs" />
+              {tag.label}
+            </span>
+          ))}
         </div>
         <Link href="/labs" className="dual-cta-btn outline">
-          Set Up Your Lab →
+          Set Up Your Lab
+          <AppIcon name="chevron-right" size="xs" className="inline-block ml-1" />
         </Link>
       </div>
     </section>

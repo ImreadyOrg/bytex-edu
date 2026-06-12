@@ -1,4 +1,5 @@
 import type { AudienceItem } from "@/types";
+import { AppIcon } from "@/lib/icons";
 
 interface AudienceCardProps {
   readonly audience: AudienceItem;
@@ -26,12 +27,12 @@ export default function AudienceCard({ audience }: AudienceCardProps) {
       )}
       <span
         className="
-          text-3xl block mb-4
+          audience-icon block mb-4
           group-hover:scale-110 transition-transform duration-300 w-fit
         "
         aria-hidden="true"
       >
-        {audience.icon}
+        <AppIcon name={audience.icon} size="xl" className="text-text-primary" />
       </span>
       <h3 className="text-text-primary font-bold text-lg mb-2">
         {audience.title}

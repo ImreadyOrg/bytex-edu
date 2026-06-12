@@ -1,4 +1,5 @@
 import type { FeatureItem } from "@/types";
+import { AppIcon } from "@/lib/icons";
 
 interface FeatureCardProps {
   readonly feature: FeatureItem;
@@ -20,14 +21,14 @@ export default function FeatureCard({ feature, index }: FeatureCardProps) {
     >
       <span
         className="
-          flex-shrink-0 text-2xl
+          flex-shrink-0
           w-10 h-10 flex items-center justify-center
           rounded-lg bg-white/5
           group-hover:scale-110 transition-transform duration-300
         "
         aria-hidden="true"
       >
-        {feature.icon}
+        <AppIcon name={feature.icon} size="md" className="text-white/90" />
       </span>
       <div>
         <h3 className="text-white font-semibold text-base mb-1.5">

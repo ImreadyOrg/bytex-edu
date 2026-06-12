@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { DEVICE_TIERS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 
 export default function DeviceModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,8 +79,8 @@ export default function DeviceModal() {
         className="modal-box" 
         style={mode === "formOnly" ? { background: "var(--light)", padding: "36px", maxWidth: "600px" } : {}}
       >
-        <button className="modal-close" onClick={handleClose}>
-          ✕
+        <button className="modal-close" onClick={handleClose} aria-label="Close">
+          <AppIcon name="x" size="sm" />
         </button>
         {mode === "default" && (
           <>
@@ -102,9 +103,16 @@ export default function DeviceModal() {
                   }}
                   style={{ cursor: "pointer" }}
                 >
-                  {tier.popText && <div className="tier-pop">{tier.popText}</div>}
+                  {tier.popText && (
+                    <div className="tier-pop">
+                      <AppIcon name="star" size="xs" className="inline-block mr-1 -mt-0.5" />
+                      {tier.popText}
+                    </div>
+                  )}
                   <div className="tier-header">
-                    <span className="tier-icon">{tier.icon}</span>
+                    <span className="tier-icon">
+                      <AppIcon name={tier.icon} size={32} />
+                    </span>
                     <div className="tier-name">{tier.name}</div>
                     <div className="tier-who">{tier.who}</div>
                     <div className="tier-price-block">
@@ -127,11 +135,14 @@ export default function DeviceModal() {
                   <div className="tier-divider"></div>
                   <div className="tier-body">
                     <div className="tier-unlock-label">
-                      🔓 Projects &amp; benefits unlocked
+                      <AppIcon name="unlock" size="xs" className="inline-block mr-1 -mt-0.5" />
+                      Projects &amp; benefits unlocked
                     </div>
                     {tier.benefits.map((benefit, bIdx) => (
                       <div className="project-benefit" key={bIdx}>
-                        <div className="pb-icon">{benefit.icon}</div>
+                        <div className="pb-icon">
+                          <AppIcon name={benefit.icon} size="sm" className="text-[var(--navy)]" />
+                        </div>
                         <div>
                           <div className="pb-title">{benefit.title}</div>
                           <div className="pb-sub">{benefit.sub}</div>
@@ -206,7 +217,7 @@ export default function DeviceModal() {
             </button>
             <div className="signup-note">
               No spam. Your advisor will WhatsApp you with pricing within 2
-              hours. 🙌
+              hours.
             </div>
           </form>
         </div>
