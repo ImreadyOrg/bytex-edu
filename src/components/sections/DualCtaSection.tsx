@@ -1,15 +1,8 @@
 "use client";
 
-export default function DualCtaSection() {
-  const handleOpenDeviceModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent("open-device-modal"));
-  };
+import Link from "next/link";
 
-  const handleOpenCollegeModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent("open-college-modal"));
-  };
+export default function DualCtaSection() {
 
   return (
     <section className="dual-cta">
@@ -29,13 +22,12 @@ export default function DualCtaSection() {
           <span className="dual-tag">📊 Management</span>
           <span className="dual-tag">💳 No-cost EMI</span>
         </div>
-        <a
-          href="#"
+        <Link
+          href="/bundles"
           className="dual-cta-btn orange"
-          onClick={handleOpenDeviceModal}
         >
           Explore Devices &amp; Projects →
-        </a>
+        </Link>
       </div>
       <div className="dual-panel right-panel">
         <div className="dual-eyebrow" style={{ color: "var(--teal)" }}>
@@ -51,13 +43,9 @@ export default function DualCtaSection() {
           <span className="dual-tag">🤖 AI Lab</span>
           <span className="dual-tag">🔬 Research Lab</span>
         </div>
-        <a
-          href="#"
-          className="dual-cta-btn outline"
-          onClick={handleOpenCollegeModal}
-        >
+        <Link href="/labs" className="dual-cta-btn outline">
           Set Up Your Lab →
-        </a>
+        </Link>
       </div>
     </section>
   );

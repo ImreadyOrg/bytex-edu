@@ -1,15 +1,8 @@
 "use client";
 
-export default function HeroSection() {
-  const handleOpenDeviceModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent("open-device-modal"));
-  };
+import Link from "next/link";
 
-  const handleOpenCollegeModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent("open-college-modal"));
-  };
+export default function HeroSection() {
 
   return (
     <section className="hero">
@@ -30,20 +23,15 @@ export default function HeroSection() {
           just own a laptop, you own your future.
         </p>
         <div className="hero-ctas fade-up d3">
-          <a
-            href="#"
+          <Link
+            href="/bundles"
             className="btn-primary"
-            onClick={handleOpenDeviceModal}
           >
             Explore Devices &amp; Projects →
-          </a>
-          <a
-            href="#"
-            className="btn-college"
-            onClick={handleOpenCollegeModal}
-          >
+          </Link>
+          <Link href="/labs" className="btn-college">
             Set Up Your Lab 🏛️
-          </a>
+          </Link>
         </div>
         <div className="hero-trust fade-up d4">
           <div className="trust-pill">

@@ -7,17 +7,29 @@ export default function CollegeLabModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [selectedLabName, setSelectedLabName] = useState<string | null>(null);
+  const [mode, setMode] = useState<"default" | "formOnly">("default");
   const enquiryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleOpen = () => {
+      setMode("default");
+      setIsOpen(true);
+      document.body.style.overflow = "hidden";
+    };
+
+    const handleOpenEnquiryForm = (e: any) => {
+      setMode("formOnly");
+      setSelectedLabName(e.detail?.labName || null);
+      setIsEnquiryOpen(true);
       setIsOpen(true);
       document.body.style.overflow = "hidden";
     };
 
     window.addEventListener("open-college-modal", handleOpen);
+    window.addEventListener("open-college-enquiry", handleOpenEnquiryForm);
     return () => {
       window.removeEventListener("open-college-modal", handleOpen);
+      window.removeEventListener("open-college-enquiry", handleOpenEnquiryForm);
     };
   }, []);
 
@@ -60,60 +72,68 @@ export default function CollegeLabModal() {
 
   return (
     <div className="modal-overlay open" onClick={handleOverlayClick}>
-      <div className="modal-box">
+      <div 
+        className="modal-box" 
+        style={mode === "formOnly" ? { background: "var(--navy)", padding: "36px", maxWidth: "700px" } : {}}
+      >
         <button className="modal-close" onClick={handleClose}>
           ✕
         </button>
-        <div className="modal-eyebrow">For colleges &amp; institutions</div>
-        <h2 className="modal-h2">Set up the lab your students deserve.</h2>
-        <p className="modal-sub">
-          Three lab configurations designed for engineering and management
-          colleges — from a budget-conscious computer lab to a high-class AI
-          research facility. Request architecture and pricing for your
-          institution.
-        </p>
+        {mode === "default" && (
+          <>
+            <div className="modal-eyebrow">For colleges &amp; institutions</div>
+            <h2 className="modal-h2">Set up the lab your students deserve.</h2>
+            <p className="modal-sub">
+              Three lab configurations designed for engineering and management
+              colleges — from a budget-conscious computer lab to a high-class AI
+              research facility. Request architecture and pricing for your
+              institution.
+            </p>
 
-        <div className="labs-grid">
-          {COLLEGE_LABS.map((lab) => (
-            <div
-              className={`lab-card ${lab.flagship ? "flagship" : ""}`}
-              key={lab.key}
-            >
-              <div className="lab-header-img" style={{ background: lab.badgeBg }}>
-                {lab.icon}
-              </div>
-              <div className="lab-body">
+            <div className="labs-grid">
+              {COLLEGE_LABS.map((lab) => (
                 <div
-                  className="lab-badge"
-                  style={{
-                    backgroundColor: lab.badgeBg,
-                    color: lab.badgeColor,
-                  }}
+                  className={`lab-card ${lab.flagship ? "flagship" : ""}`}
+                  key={lab.key}
                 >
-                  {lab.badgeText}
+                  <div className="lab-header-img" style={{ background: lab.badgeBg }}>
+                    {lab.icon}
+                  </div>
+                  <div className="lab-body">
+                    <div
+                      className="lab-badge"
+                      style={{
+                        backgroundColor: lab.badgeBg,
+                        color: lab.badgeColor,
+                      }}
+                    >
+                      {lab.badgeText}
+                    </div>
+                    <div className="lab-name">{lab.name}</div>
+                    <div className="lab-desc">{lab.desc}</div>
+                    <ul className="lab-includes">
+                      {lab.includes.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                    <button
+                      className="lab-reveal-btn"
+                      onClick={() => handleOpenEnquiry(lab.name)}
+                    >
+                      Request Architecture &amp; Pricing →
+                    </button>
+                  </div>
                 </div>
-                <div className="lab-name">{lab.name}</div>
-                <div className="lab-desc">{lab.desc}</div>
-                <ul className="lab-includes">
-                  {lab.includes.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-                <button
-                  className="lab-reveal-btn"
-                  onClick={() => handleOpenEnquiry(lab.name)}
-                >
-                  Request Architecture &amp; Pricing →
-                </button>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
 
         <div
           ref={enquiryRef}
           className={`lab-enquiry ${isEnquiryOpen ? "open" : ""}`}
           id="labEnquiry"
+          style={mode === "formOnly" ? { border: "none", background: "transparent", margin: 0, padding: 0 } : {}}
         >
           <h3 id="labEnquiryTitle">
             Request Lab Architecture &amp; Pricing
