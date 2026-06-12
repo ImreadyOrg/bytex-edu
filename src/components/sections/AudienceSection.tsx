@@ -1,4 +1,5 @@
 import { AUDIENCE_ITEMS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 
 export default function AudienceSection() {
   return (
@@ -16,7 +17,9 @@ export default function AudienceSection() {
             className={`audience-card ${item.isPrimary ? "featured" : ""}`}
           >
             {item.isPrimary && <div className="featured-tag">Primary focus</div>}
-            <span className="audience-icon">{item.icon}</span>
+            <span className="audience-icon">
+              <AppIcon name={item.icon} size="xl" className="text-[var(--navy)]" />
+            </span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </div>

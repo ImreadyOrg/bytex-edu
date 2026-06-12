@@ -1,6 +1,7 @@
 "use client";
 
 import { NAV_LINKS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 
 import Link from "next/link";
 
@@ -27,7 +28,8 @@ export default function Navbar() {
         ))}
       </div>
       <Link href="/bundles" className="nav-cta">
-        Explore Devices →
+        Explore Devices
+        <AppIcon name="chevron-right" size="xs" className="inline-block ml-1" />
       </Link>
     </nav>
   );

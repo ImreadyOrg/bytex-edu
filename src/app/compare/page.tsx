@@ -2,8 +2,8 @@
 import React, { useState, useMemo, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams, useRouter } from "next/navigation";
-import { Check, ChevronRight, Home, Lock, Truck, Cpu, Database, HardDrive, Monitor, Gpu, ShieldCheck, X } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Check, ChevronRight, Home, Lock, Truck, Cpu, Database, HardDrive, Monitor, Gpu, X } from "lucide-react";
 import { productsInventory, Product } from "@/lib/product";
 import DeviceModal from "@/components/sections/DeviceModal";
 import CollegeLabModal from "@/components/sections/CollegeLabModal";
@@ -75,6 +75,20 @@ const EmptyComparisonCards = ({ count = 3, specSkeletonCount = 7 }) => (
     ))}
   </div>
 );
+
+const PROCESSOR_LOGOS: Record<string, { src: string; alt: string }> = {
+  Intel: {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/512px-Intel-logo.svg.png",
+    alt: "Intel",
+  },
+  AMD: {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/512px-AMD_Logo.svg.png",
+    alt: "AMD",
+  },
+};
+
+// Slightly darker orange highlighter — value text only, icon-chip specs
+const KEY_POINT_HIGHLIGHT = "bg-[#ffd4a8] box-decoration-clone px-0.5 py-px rounded-[2px]";
 
 function CompareContent() {
   const searchParams = useSearchParams();
@@ -193,8 +207,8 @@ function CompareContent() {
 
           <div className="flex w-full items-center justify-between gap-3 px-3 pb-3 pt-2 sm:px-4 sm:pb-4 sm:pt-3">
             <label
-              className={`inline-flex items-center gap-2 text-sm ${
-                !hasSelection ? 'text-[#999999] cursor-default' : 'text-[#666666] cursor-pointer'
+              className={`inline-flex items-center gap-2 text-sm font-medium ${
+                !hasSelection ? 'text-[#888888] cursor-default' : 'text-[#1a1a1a] cursor-pointer'
               }`}
             >
               <input
@@ -217,12 +231,10 @@ function CompareContent() {
                 style={{ gridTemplateColumns: `repeat(${Math.max(displayProducts.length, 1)}, minmax(0, 1fr))` }}
               >
                 {displayProducts.map((product) => {
-                  const chipIsHighlighted = (key: string) => {
-                    if (!showDiffOnly) return false;
-                    return differingKeys.has(key);
-                  };
-
+                  const processorLogo = PROCESSOR_LOGOS[product.processorcompany];
                   const commentsList = product.comments.split('\n').map(c => c.trim()).filter(Boolean);
+                  const highlightKeyPoint = (key: string) =>
+                    showDiffOnly && differingKeys.has(key) ? KEY_POINT_HIGHLIGHT : "";
 
                   return (
                     <div
@@ -232,7 +244,7 @@ function CompareContent() {
                       {product.tagLabel ? (
                         <div className="relative z-10 mb-2 flex justify-center px-1">
                           <div className="inline-flex max-w-[min(100%,300px)] items-center justify-center rounded-[999px] bg-[#E8F0FE] px-4 py-1.5 text-center font-sans text-[11px] font-medium leading-snug tracking-normal text-[#1A3B8B] antialiased shadow-[0_1px_4px_rgba(26,59,139,0.06),0_4px_14px_rgba(26,59,139,0.04)] sm:max-w-[min(100%,340px)] sm:px-5 sm:py-2 sm:text-xs">
-                            {product.tagLabel.replace('⭐ ', '')}
+                            {product.tagLabel}
                           </div>
                         </div>
                       ) : <div className="h-7 mb-2" />}
@@ -250,13 +262,13 @@ function CompareContent() {
                             className="object-contain object-center p-2 sm:p-4"
                             unoptimized
                           />
-                          {product.processorcompany === 'Intel' ? (
-                            <div className="absolute bottom-4 right-4 z-10 flex items-center justify-center rounded bg-white/90 p-1.5 shadow-sm">
-                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/512px-Intel-logo.svg.png" alt="Intel" className="h-3 sm:h-4 object-contain" />
-                            </div>
-                          ) : product.processorcompany === 'AMD' ? (
-                            <div className="absolute bottom-4 right-4 z-10 flex items-center justify-center rounded bg-white/90 p-1.5 shadow-sm">
-                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/512px-AMD_Logo.svg.png" alt="AMD" className="h-3 sm:h-4 object-contain" />
+                          {processorLogo ? (
+                            <div className="absolute bottom-4 right-4 z-10 flex items-center justify-center rounded bg-white/95 p-1.5 shadow-sm ring-1 ring-black/5">
+                              <img
+                                src={processorLogo.src}
+                                alt={processorLogo.alt}
+                                className="h-3.5 w-auto max-w-[52px] object-contain sm:h-4 sm:max-w-[60px]"
+                              />
                             </div>
                           ) : null}
                         </div>
@@ -271,36 +283,36 @@ function CompareContent() {
                       <div className="mb-5 flex w-full flex-col self-start bg-white px-1">
                         <div className="flex w-full flex-col gap-y-1.5">
                           {/* Line 1: CPU | OS */}
-                          <div className="flex min-h-[20px] w-full flex-row items-center justify-center gap-x-2 font-normal leading-snug text-slate-600 flex-wrap">
-                            <span className={`inline-flex items-center gap-1.5 text-[13px] ${chipIsHighlighted('processor') ? 'bg-amber-50 rounded px-1' : ''}`}>
+                          <div className="flex min-h-[20px] w-full flex-row items-center justify-center gap-x-2 font-normal leading-snug text-[#333333] flex-wrap">
+                            <span className="inline-flex items-center gap-1.5 text-[13px]">
                               <Cpu className="h-[15px] w-[15px] shrink-0 text-[#153a75]" strokeWidth={1.5} />
-                              <span className="break-words text-center">{product.processor}</span>
+                              <span className={`break-words text-center ${highlightKeyPoint('processor')}`}>{product.processor}</span>
                             </span>
                             <span className="shrink-0 select-none text-[#d1d5db]">|</span>
-                            <span className={`inline-flex items-center gap-1.5 text-[13px] ${chipIsHighlighted('operatingSystem') ? 'bg-amber-50 rounded px-1' : ''}`}>
+                            <span className="inline-flex items-center gap-1.5 text-[13px]">
                               <Monitor className="h-[15px] w-[15px] shrink-0 text-[#153a75]" strokeWidth={1.5} />
-                              <span className="break-words text-center">{product.operatingSystem}</span>
+                              <span className={`break-words text-center ${highlightKeyPoint('operatingSystem')}`}>{product.operatingSystem}</span>
                             </span>
                           </div>
                           
                           {/* Line 2: Memory | Graphics */}
-                          <div className="flex min-h-[20px] w-full flex-row items-center justify-center gap-x-2 font-normal leading-snug text-slate-600 flex-wrap">
-                            <span className={`inline-flex items-center gap-1.5 text-[13px] ${chipIsHighlighted('memory') ? 'bg-amber-50 rounded px-1' : ''}`}>
+                          <div className="flex min-h-[20px] w-full flex-row items-center justify-center gap-x-2 font-normal leading-snug text-[#333333] flex-wrap">
+                            <span className="inline-flex items-center gap-1.5 text-[13px]">
                               <Database className="h-[15px] w-[15px] shrink-0 text-[#153a75]" strokeWidth={1.5} />
-                              <span className="break-words text-center">{product.memory}</span>
+                              <span className={`break-words text-center ${highlightKeyPoint('memory')}`}>{product.memory}</span>
                             </span>
                             <span className="shrink-0 select-none text-[#d1d5db]">|</span>
-                            <span className={`inline-flex items-center gap-1.5 text-[13px] ${chipIsHighlighted('graphics') ? 'bg-amber-50 rounded px-1' : ''}`}>
+                            <span className="inline-flex items-center gap-1.5 text-[13px]">
                               <Gpu className="h-[15px] w-[15px] shrink-0 text-[#153a75]" strokeWidth={1.5} />
-                              <span className="break-words text-center">{product.graphics}</span>
+                              <span className={`break-words text-center ${highlightKeyPoint('graphics')}`}>{product.graphics}</span>
                             </span>
                           </div>
 
                           {/* Line 3: Storage */}
-                          <div className="flex min-h-[20px] w-full flex-row items-center justify-center font-normal leading-snug text-slate-600 flex-wrap">
-                            <span className={`inline-flex items-center gap-1.5 text-[13px] ${chipIsHighlighted('storage') ? 'bg-amber-50 rounded px-1' : ''}`}>
+                          <div className="flex min-h-[20px] w-full flex-row items-center justify-center font-normal leading-snug text-[#333333] flex-wrap">
+                            <span className="inline-flex items-center gap-1.5 text-[13px]">
                               <HardDrive className="h-[15px] w-[15px] shrink-0 text-[#153a75]" strokeWidth={1.5} />
-                              <span className="break-words text-center">{product.storage}</span>
+                              <span className={`break-words text-center ${highlightKeyPoint('storage')}`}>{product.storage}</span>
                             </span>
                           </div>
                         </div>
@@ -343,8 +355,8 @@ function CompareContent() {
                             }
                           }}
                         >
-                          <Lock className="h-5 w-5 shrink-0" />
-                          <span>{source === "labs" ? "Unlock Special Price" : "Unlock Student Discount"}</span>
+                          <Lock className="h-5 w-5 shrink-0 text-white" strokeWidth={2} aria-hidden />
+                          {source === "labs" ? "Unlock Special Price" : "Unlock Student Discount"}
                         </button>
                         {source !== "labs" && <p className="mt-2 text-center text-[11px] text-[#666666]">Revealed on sign-up</p>}
                         <div className="mt-2 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-[#153a75] sm:text-xs">
@@ -373,7 +385,7 @@ function CompareContent() {
                         className="px-4 py-7 text-center sm:px-6 sm:py-9"
                       >
                         <div className="mx-auto h-6 w-[120px] rounded-full bg-[#f0f0f0]" />
-                        <div className="mt-3 text-[10px] font-normal uppercase tracking-[0.2em] text-[#999999]">
+                        <div className="mt-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#555555]">
                           {row.label}
                         </div>
                       </div>
@@ -391,14 +403,12 @@ function CompareContent() {
                       return (
                         <div
                           key={`${row.key}-${colIndex}`}
-                          className={`px-4 py-7 text-center sm:px-6 sm:py-9 transition-colors ${
-                            showDiffOnly && differingKeys.has(row.key) ? 'bg-amber-50/30' : ''
-                          }`}
+                          className="px-4 py-7 text-center sm:px-6 sm:py-9"
                         >
-                          <div className="text-sm font-semibold text-[#1a1a1a] sm:text-base">
+                          <div className="text-sm text-[#111111] sm:text-base">
                             {value}
                           </div>
-                          <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#999999]">
+                          <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#555555]">
                             {row.label}
                           </div>
                         </div>
@@ -406,12 +416,6 @@ function CompareContent() {
                     })}
                   </div>
                 ))}
-          </div>
-
-          <div className="flex justify-center p-8 bg-gray-50 border-t border-[#ededed]">
-            <Link href={parentLinkHref} className="text-[#153a75] font-semibold hover:underline">
-              ← Back to {parentLinkLabel}
-            </Link>
           </div>
         </div>
       </main>

@@ -183,8 +183,10 @@
 }
 
 .icon {
-  font-size: 22px;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .name {
@@ -240,8 +242,9 @@
 }
 
 .lockIcon {
-  opacity: 0.45;
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.65;
 }
 
 /* ── SECTION DIVIDER ── */
@@ -283,10 +286,11 @@
 }
 
 .bIcon {
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   width: 22px;
-  text-align: center;
 }
 
 .bLabel {
@@ -298,8 +302,9 @@
 }
 
 .bArrow {
+  display: inline-flex;
+  align-items: center;
   color: #cbd5e1;
-  font-size: 14px;
   flex-shrink: 0;
 }
 
@@ -390,12 +395,16 @@
   padding: 8px 4px 0px 4px;
   background: transparent;
   border: none;
-  font-weight: 800;
   font-size: 14px;
   cursor: pointer;
 }
 
-.actionBtnContinue span {
+.chooseTierLabel {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.actionBtnContinue span:not(.chooseTierLabel) {
   color: var(--orange);
 }
 
@@ -474,8 +483,20 @@
 }
 
 .trustIcon {
-  font-size: 15px;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.popularTag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.popularTagIcon {
+  flex-shrink: 0;
 }
 
 /* ── RESPONSIVE ── */

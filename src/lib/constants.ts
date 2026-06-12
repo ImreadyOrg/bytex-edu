@@ -27,20 +27,20 @@ export const NAV_LINKS: readonly NavLink[] = [
 
 export const AUDIENCE_ITEMS: readonly AudienceItem[] = [
   {
-    icon: "🎒",
+    icon: "graduation-cap",
     title: "Engineering Students",
     description:
       "CS, IT, Mechanical, Electronics — your device comes bundled with real industry projects matched to your branch. Start building your portfolio from Year 1.",
     isPrimary: true,
   },
   {
-    icon: "📊",
+    icon: "bar-chart-3",
     title: "Management & BBA Students",
     description:
       "Business strategy, finance, marketing — work on live industry briefs with guidance from professionals who actually work in the field. Not case studies. Real work.",
   },
   {
-    icon: "👨‍👩‍👧",
+    icon: "users",
     title: "Parents",
     description:
       "This isn't just a laptop purchase. It's career access from Day 1 — projects, mentors, and a verified portfolio that sets your child apart before final year placements begin.",
@@ -49,37 +49,37 @@ export const AUDIENCE_ITEMS: readonly AudienceItem[] = [
 
 export const BUNDLED_FEATURES: readonly FeatureItem[] = [
   {
-    icon: "🏭",
+    icon: "factory",
     title: "Sponsored Industry Projects",
     description:
       "Work on real briefs sponsored by companies — not simulated textbook problems. Projects are matched to your branch and ambition level. You build something real, and industry sees it.",
   },
   {
-    icon: "🧑‍💼",
+    icon: "user-round",
     title: "1-on-1 Industry Mentor Sessions",
     description:
       "Engineers, analysts, product managers, and researchers from active careers review your work and coach your growth. Not a teacher who's never worked outside a college.",
   },
   {
-    icon: "📁",
+    icon: "folder-open",
     title: "Verified Portfolio — Proof of Work",
     description:
       "GitHub repos, demo videos, mentor reviews, and team evaluations — all tied to your profile. Recruiters see what you built, not just a grade. Your portfolio follows you.",
   },
   {
-    icon: "🏆",
+    icon: "trophy",
     title: "Innovation Challenges & Hackathons",
     description:
       "Regular challenges co-designed with industry — with prizes, recognition, and direct visibility with hiring teams. Compete, collaborate, get noticed.",
   },
   {
-    icon: "🎯",
+    icon: "target",
     title: "Placement Referral Network",
     description:
       "Students who reach higher proficiency levels get warm referrals to partner companies — not a job board, actual introductions. Companies trust the work we've verified.",
   },
   {
-    icon: "🛡️",
+    icon: "shield-check",
     title: "Device Support & Warranty",
     description:
       "Official warranty, on-site support, and a dedicated student advisor on WhatsApp throughout your purchase and beyond. Delivery to your door, setup included.",
@@ -146,25 +146,25 @@ export const PROJECTS_TICKER: readonly ProjectItem[] = [
 
 export const PROJECTS_OUTCOMES: readonly WhyItem[] = [
   {
-    icon: "🏭",
+    icon: "factory",
     title: "Live industry briefs — not textbook simulations",
     description:
       "Every project comes from a real company challenge. You solve something that actually matters to them.",
   },
   {
-    icon: "🧑‍💼",
+    icon: "user-round",
     title: "Mentors with active industry careers",
     description:
       "Engineers, analysts, and product managers review your work and coach you week by week.",
   },
   {
-    icon: "📁",
+    icon: "folder-open",
     title: "Proof of work, not just a certificate",
     description:
       "GitHub repos, demo videos, mentor evaluations — a portfolio that recruiters actually care about.",
   },
   {
-    icon: "🎯",
+    icon: "target",
     title: "Proficiency levels industry recognises",
     description:
       "From Explorer to Research Fellow — structured levels that companies understand and value at hiring time.",
@@ -226,31 +226,31 @@ export const DEVICE_TIERS: readonly TierItem[] = [
     key: "starter",
     name: "Starter",
     who: "Budget-smart · i3 class · Everyday college tasks",
-    icon: "🌱",
+    icon: "sprout",
     price: "₹35,000",
     benefits: [
       {
-        icon: "📋",
+        icon: "clipboard-list",
         title: "1 Sponsored Industry Project",
         sub: "Explorer level — guided, beginner-friendly brief",
       },
       {
-        icon: "🧑‍💼",
+        icon: "user-round",
         title: "1 Group Mentor Session",
         sub: "Industry professional reviews your work",
       },
       {
-        icon: "📁",
+        icon: "folder-open",
         title: "Portfolio Profile",
         sub: "Public profile with your project & evidence",
       },
       {
-        icon: "🏅",
+        icon: "award",
         title: "Level 1 — Explorer",
         sub: "Proficiency badge on your profile",
       },
       {
-        icon: "🛡️",
+        icon: "shield-check",
         title: "Warranty & Delivery",
         sub: "Official warranty, on-site support, delivered to door",
       },
@@ -260,33 +260,33 @@ export const DEVICE_TIERS: readonly TierItem[] = [
     key: "pro",
     name: "Pro",
     who: "Mainstream · i5 class · The sweet spot for college",
-    icon: "⚡",
+    icon: "zap",
     price: "₹55,000",
     featured: true,
-    popText: "⭐ Most Popular — Engineering & MBA",
+    popText: "Most Popular — Engineering & MBA",
     benefits: [
       {
-        icon: "📋",
+        icon: "clipboard-list",
         title: "3 Sponsored Industry Projects",
         sub: "Levels 1–3 · Solo & team briefs · Multiple domains",
       },
       {
-        icon: "🧑‍💼",
+        icon: "user-round",
         title: "2 Personal Mentor Sessions",
         sub: "1-on-1 with industry professionals",
       },
       {
-        icon: "📁",
+        icon: "folder-open",
         title: "Portfolio Audit & Review",
         sub: "Mentor reviews your complete profile",
       },
       {
-        icon: "🏆",
+        icon: "trophy",
         title: "Innovation Challenge Entry",
         sub: "Access to sponsored hackathons & prizes",
       },
       {
-        icon: "🎯",
+        icon: "target",
         title: "Priority Placement Referrals",
         sub: "Warm intros to partner companies at Level 3+",
       },
@@ -296,31 +296,31 @@ export const DEVICE_TIERS: readonly TierItem[] = [
     key: "power",
     name: "Power",
     who: "High-performance · i7 + GPU · AI, gaming, deep work",
-    icon: "🔥",
+    icon: "flame",
     price: "₹85,000",
     benefits: [
       {
-        icon: "📋",
+        icon: "clipboard-list",
         title: "5 Projects incl. Level 4–5 Tracks",
         sub: "Industry Contributor & Research Fellow briefs",
       },
       {
-        icon: "🧑‍💼",
+        icon: "user-round",
         title: "Unlimited Mentor Sessions",
         sub: "Open access to the full mentor network",
       },
       {
-        icon: "🔬",
+        icon: "microscope",
         title: "Patent Filing Guidance",
         sub: "Support for research and IP filing with faculty",
       },
       {
-        icon: "🏆",
+        icon: "badge-dollar-sign",
         title: "Research Grant Matching",
         sub: "Connect with funded research opportunities",
       },
       {
-        icon: "🎯",
+        icon: "user-plus",
         title: "Industry Hiring Fast-Track",
         sub: "Direct access to senior hiring at partner firms",
       },
@@ -332,49 +332,49 @@ export const COLLEGE_LABS: readonly LabItem[] = [
   {
     key: "budget",
     name: "Budget Lab",
-    icon: "🖥️",
+    icon: "monitor",
     badgeBg: "#EEF2FF",
     badgeColor: "#3730A3",
-    badgeText: "🟦 Foundation",
+    badgeText: "Foundation",
     desc: "A fully-functional computer lab that covers everyday academic workloads — coding, office applications, internet access, and basic multimedia. Designed for maximum student access at minimum cost.",
     includes: [
-      "Thin client / budget desktop setup",
-      "Networking & LAN infrastructure",
-      "Licensed OS & productivity suite",
-      "Student management software",
-      "Faculty control console",
+      { icon: "monitor", text: "Thin client / budget desktop setup" },
+      { icon: "network", text: "Networking & LAN infrastructure" },
+      { icon: "layout-grid", text: "Licensed OS & productivity suite" },
+      { icon: "users", text: "Student management software" },
+      { icon: "settings", text: "Faculty control console" },
     ],
   },
   {
     key: "mainstream",
     name: "AI Lab",
-    icon: "🤖",
+    icon: "brain",
     badgeBg: "var(--orange-light)",
     badgeColor: "#C04000",
-    badgeText: "🟧 Mainstream",
+    badgeText: "Mainstream",
     desc: "Purpose-built for AI, data science, and software development courses. Mid-range GPU workstations that handle ML training, computer vision, and data pipelines with ease.",
     includes: [
-      "Mid-range GPU workstations",
-      "CUDA-enabled ML environment",
-      "Pre-configured AI/DS software stack",
-      "NAS storage for datasets",
-      "Industry project integration",
+      { icon: "gpu", text: "Mid-range GPU workstations" },
+      { icon: "cpu", text: "CUDA-enabled ML environment" },
+      { icon: "layers", text: "Pre-configured AI/DS software stack" },
+      { icon: "hard-drive", text: "NAS storage for datasets" },
+      { icon: "factory", text: "Industry project integration" },
     ],
   },
   {
     key: "research",
     name: "Research AI Lab",
-    icon: "🔬",
+    icon: "microscope",
     badgeBg: "var(--purple-light)",
     badgeColor: "var(--purple)",
-    badgeText: "⭐ Flagship",
+    badgeText: "Flagship",
     desc: "A high-class AI research facility designed to attract top faculty, industry collaboration, and accreditation recognition. Built for deep learning, computer vision, NLP, and funded research projects.",
     includes: [
-      "High-end GPU servers (A-series / H-series)",
-      "Dedicated research computing cluster",
-      "Industry collaboration setup",
-      "Patent & IP filing support integration",
-      "NAAC & NIRF documentation support",
+      { icon: "server", text: "High-end GPU servers (A-series / H-series)" },
+      { icon: "boxes", text: "Dedicated research computing cluster" },
+      { icon: "handshake", text: "Industry collaboration setup" },
+      { icon: "file-check", text: "Patent & IP filing support integration" },
+      { icon: "award", text: "NAAC & NIRF documentation support" },
     ],
     flagship: true,
   },

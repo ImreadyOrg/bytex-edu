@@ -2,9 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { DEVICE_TIERS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 import { ChevronRight, Home } from "lucide-react";
 
 const VISIBLE_BENEFITS = 3;
+
+const TRUST_ITEMS = [
+  { icon: "shield-check" as const, label: "Official warranty & on-site support" },
+  { icon: "truck" as const, label: "Safe & secure delivery" },
+  { icon: "tag" as const, label: "Student discounts on all tiers" },
+  { icon: "headphones" as const, label: "24x7 expert support" },
+];
 
 export default function BundlesPage() {
   return (
@@ -48,9 +56,14 @@ export default function BundlesPage() {
                 key={tier.key}
                 href={`/compare?keys=${tier.key}`}
                 className={tier.featured ? styles.cardPopular : styles.card}
-                style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+                style={{ textDecoration: "none", color: "inherit", display: "block" }}
               >
-                {tier.popText ? <div className={styles.popularTag}>{tier.popText}</div> : null}
+                {tier.popText ? (
+                  <div className={styles.popularTag}>
+                    <AppIcon name="star" size="xs" className={styles.popularTagIcon} />
+                    {tier.popText}
+                  </div>
+                ) : null}
 
                 <div className={styles.imgWrapper}>
                   <Image
@@ -63,7 +76,9 @@ export default function BundlesPage() {
                 </div>
 
                 <div className={styles.nameRow}>
-                  <span className={styles.icon}>{tier.icon}</span>
+                  <span className={styles.icon}>
+                    <AppIcon name={tier.icon} size="lg" className="text-[var(--navy)]" />
+                  </span>
                   <span className={styles.name}>{tier.name}</span>
                 </div>
                 <div className={styles.desc}>{tier.who}</div>
@@ -78,21 +93,28 @@ export default function BundlesPage() {
                 </div>
 
                 <div className={styles.discount}>
-                  <span className={styles.lockIcon}>🔒</span>
+                  <span className={styles.lockIcon}>
+                    <AppIcon name="lock" size="xs" className="text-[var(--gray)]" />
+                  </span>
                   Student discount revealed on sign-up
                 </div>
 
                 <div className={styles.divider} />
 
                 <div className={styles.benefitsTitle}>
-                  <span>🔓</span> PROJECTS &amp; BENEFITS UNLOCKED
+                  <AppIcon name="unlock" size="xs" />
+                  PROJECTS &amp; BENEFITS UNLOCKED
                 </div>
                 <ul className={styles.benefitsList}>
                   {visibleBenefits.map((b) => (
                     <li key={b.title}>
-                      <span className={styles.bIcon}>{b.icon}</span>
+                      <span className={styles.bIcon}>
+                        <AppIcon name={b.icon} size="sm" className="text-[var(--navy)]" />
+                      </span>
                       <span className={styles.bLabel}>{b.title}</span>
-                      <span className={styles.bArrow}>›</span>
+                      <span className={styles.bArrow}>
+                        <ChevronRight size={14} strokeWidth={2} aria-hidden />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -103,10 +125,8 @@ export default function BundlesPage() {
 
                 <div className={styles.cardAction}>
                   <div className={styles.bottomDivider} />
-                  <div
-                    className={styles.actionBtnContinue}
-                  >
-                    <span>Choose this tier</span>
+                  <div className={styles.actionBtnContinue}>
+                    <span className={styles.chooseTierLabel}>Choose this tier</span>
                     <span className={styles.actionArrowContinue}>
                       <ChevronRight size={18} strokeWidth={2.5} />
                     </span>
@@ -118,22 +138,14 @@ export default function BundlesPage() {
         </div>
 
         <div className={styles.bundlesTrust}>
-          <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>🛡️</span>
-            Official warranty &amp; on-site support
-          </div>
-          <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>🚚</span>
-            Safe &amp; secure delivery
-          </div>
-          <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>🏷️</span>
-            Student discounts on all tiers
-          </div>
-          <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>🎧</span>
-            24x7 expert support
-          </div>
+          {TRUST_ITEMS.map((item) => (
+            <div className={styles.trustItem} key={item.label}>
+              <span className={styles.trustIcon}>
+                <AppIcon name={item.icon} size="sm" className="text-[var(--gray)]" />
+              </span>
+              {item.label}
+            </div>
+          ))}
         </div>
       </div>
     </div>

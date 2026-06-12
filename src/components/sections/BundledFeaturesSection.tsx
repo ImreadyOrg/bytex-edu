@@ -1,4 +1,5 @@
 import { BUNDLED_FEATURES, STATS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 
 export default function BundledFeaturesSection() {
   const leftFeatures = BUNDLED_FEATURES.slice(0, 3);
@@ -34,7 +35,7 @@ export default function BundledFeaturesSection() {
                 className="bundle-num"
                 style={{ background: backgrounds[i] }}
               >
-                {feature.icon}
+                <AppIcon name={feature.icon} size="md" className="text-white" />
               </div>
               <div>
                 <h3>{feature.title}</h3>
@@ -51,7 +52,7 @@ export default function BundledFeaturesSection() {
                 className="bundle-num"
                 style={{ background: backgrounds[i + 3] }}
               >
-                {feature.icon}
+                <AppIcon name={feature.icon} size="md" className="text-white" />
               </div>
               <div>
                 <h3>{feature.title}</h3>

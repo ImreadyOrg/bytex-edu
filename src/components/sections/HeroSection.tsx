@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { AppIcon } from "@/lib/icons";
 
 export default function HeroSection() {
-
   return (
     <section className="hero">
       <div className="hero-content">
         <div className="hero-badge fade-up">
-          🎓 Admission Season 2026 — Enrolments Open
+          <AppIcon name="graduation-cap" size="xs" className="inline-block mr-1.5 -mt-0.5" />
+          Admission Season 2026 — Enrollments Open
         </div>
         <h1 className="fade-up d1">
           Get a device.
@@ -23,25 +24,27 @@ export default function HeroSection() {
           just own a laptop, you own your future.
         </p>
         <div className="hero-ctas fade-up d3">
-          <Link
-            href="/bundles"
-            className="btn-primary"
-          >
-            Explore Devices &amp; Projects →
+          <Link href="/bundles" className="btn-primary">
+            Explore Devices &amp; Projects
+            <AppIcon name="chevron-right" size="xs" className="inline-block ml-1" />
           </Link>
           <Link href="/labs" className="btn-college">
-            Set Up Your Lab 🏛️
+            Set Up Your Lab
+            <AppIcon name="building-2" size="xs" className="inline-block ml-1.5" />
           </Link>
         </div>
         <div className="hero-trust fade-up d4">
           <div className="trust-pill">
-            ✓ <strong>Industry projects</strong> included
+            <AppIcon name="check" size="xs" className="inline-block mr-1 text-[var(--teal)]" />
+            <strong>Industry projects</strong> included
           </div>
           <div className="trust-pill">
-            ✓ <strong>No-cost EMI</strong> available
+            <AppIcon name="check" size="xs" className="inline-block mr-1 text-[var(--teal)]" />
+            <strong>No-cost EMI</strong> available
           </div>
           <div className="trust-pill">
-            ✓ <strong>Mentor-reviewed</strong> portfolio
+            <AppIcon name="check" size="xs" className="inline-block mr-1 text-[var(--teal)]" />
+            <strong>Mentor-reviewed</strong> portfolio
           </div>
         </div>
       </div>
@@ -62,7 +65,8 @@ export default function HeroSection() {
                 color: "var(--purple)",
               }}
             >
-              🎯 Industry verified
+              <AppIcon name="badge-check" size="xs" className="inline-block mr-1 -mt-0.5" />
+              Industry verified
             </div>
           </div>
           <div className="journey-card card-mid">
@@ -80,12 +84,14 @@ export default function HeroSection() {
                 color: "#007A62",
               }}
             >
-              ⚡ Week 1 of 10
+              <AppIcon name="zap" size="xs" className="inline-block mr-1 -mt-0.5" />
+              Week 1 of 10
             </div>
           </div>
           <div className="journey-card card-front">
             <div className="card-eyebrow" style={{ color: "var(--orange)" }}>
-              🔥 Most Popular — Pro Tier
+              <AppIcon name="star" size="xs" className="inline-block mr-1 -mt-0.5" />
+              Most Popular — Pro Tier
             </div>
             <div className="card-title">
               Your device is ready. Your projects await.
@@ -102,10 +108,14 @@ export default function HeroSection() {
                 border: "1.5px solid var(--orange-mid)",
               }}
             >
-              ✦ Unlock on purchase
+              Unlock on purchase
             </div>
           </div>
-          <div className="floating-chip">📁 Portfolio building →</div>
+          <div className="floating-chip">
+            <AppIcon name="folder-open" size="xs" className="inline-block mr-1 -mt-0.5" />
+            Portfolio building
+            <AppIcon name="chevron-right" size="xs" className="inline-block ml-0.5" />
+          </div>
         </div>
       </div>
     </section>

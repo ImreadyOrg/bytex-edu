@@ -1,4 +1,5 @@
 import { TESTIMONIALS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 
 export default function TestimonialsSection() {
   return (
@@ -8,9 +9,20 @@ export default function TestimonialsSection() {
       <div className="testimonials-grid">
         {TESTIMONIALS.map((testimonial) => (
           <div className="testimonial-card" key={testimonial.name}>
-            <div className="stars">
-              {"★".repeat(testimonial.rating)}
-              {"☆".repeat(5 - testimonial.rating)}
+            <div className="stars" aria-label={`${testimonial.rating} out of 5 stars`}>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <AppIcon
+                  key={index}
+                  name="star"
+                  size="sm"
+                  className={
+                    index < testimonial.rating
+                      ? "text-[var(--orange)] fill-[var(--orange)]"
+                      : "text-[var(--border)]"
+                  }
+                  strokeWidth={index < testimonial.rating ? 0 : 1.75}
+                />
+              ))}
             </div>
             <blockquote>{testimonial.quote}</blockquote>
             <div className="testimonial-author">

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { COLLEGE_LABS } from "@/lib/constants";
+import { AppIcon } from "@/lib/icons";
 
 export default function CollegeLabModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,12 +73,12 @@ export default function CollegeLabModal() {
 
   return (
     <div className="modal-overlay open" onClick={handleOverlayClick}>
-      <div 
-        className="modal-box" 
-        style={mode === "formOnly" ? { background: "var(--navy)", padding: "36px", maxWidth: "700px" } : {}}
+      <div
+        className="modal-box"
+        style={mode === "formOnly" ? { background: "var(--light)", padding: "36px", maxWidth: "600px" } : {}}
       >
-        <button className="modal-close" onClick={handleClose}>
-          ✕
+        <button className="modal-close" onClick={handleClose} aria-label="Close">
+          <AppIcon name="x" size="sm" />
         </button>
         {mode === "default" && (
           <>
@@ -97,7 +98,7 @@ export default function CollegeLabModal() {
                   key={lab.key}
                 >
                   <div className="lab-header-img" style={{ background: lab.badgeBg }}>
-                    {lab.icon}
+                    <AppIcon name={lab.icon} size={28} className="text-[var(--navy)]" />
                   </div>
                   <div className="lab-body">
                     <div
@@ -112,8 +113,11 @@ export default function CollegeLabModal() {
                     <div className="lab-name">{lab.name}</div>
                     <div className="lab-desc">{lab.desc}</div>
                     <ul className="lab-includes">
-                      {lab.includes.map((item, idx) => (
-                        <li key={idx}>{item}</li>
+                      {lab.includes.map((item) => (
+                        <li key={item.text}>
+                          <AppIcon name={item.icon} size="xs" className="shrink-0 text-[var(--teal)]" />
+                          {item.text}
+                        </li>
                       ))}
                     </ul>
                     <button
@@ -131,18 +135,17 @@ export default function CollegeLabModal() {
 
         <div
           ref={enquiryRef}
-          className={`lab-enquiry ${isEnquiryOpen ? "open" : ""}`}
+          className={`signup-prompt ${isEnquiryOpen ? "open" : ""}`}
           id="labEnquiry"
           style={mode === "formOnly" ? { border: "none", background: "transparent", margin: 0, padding: 0 } : {}}
         >
           <h3 id="labEnquiryTitle">
-            Request Lab Architecture &amp; Pricing
+            Request architecture &amp; pricing
             {selectedLabName ? ` — ${selectedLabName}` : ""}
           </h3>
           <p>
             Tell us about your institution and we&apos;ll prepare a detailed
-            architecture document and pricing proposal for your specific
-            requirements — within 48 hours.
+            architecture document and pricing proposal within 48 hours.
           </p>
           <form
             className="signup-form"
@@ -196,14 +199,10 @@ export default function CollegeLabModal() {
               placeholder="Estimated number of workstations / seats"
               required
             />
-            <button
-              type="submit"
-              className="form-submit"
-              style={{ background: "var(--teal)" }}
-            >
+            <button type="submit" className="form-submit">
               Request Architecture &amp; Pricing →
             </button>
-            <div className="signup-note" style={{ color: "rgba(255,255,255,0.4)" }}>
+            <div className="signup-note">
               We respond within 48 hours with a detailed document. No commitment
               required.
             </div>
